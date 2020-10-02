@@ -14,7 +14,7 @@ const projection = {
     msg: 1,
     time: 1,
     _id: 0
-};
+}
 
 const dbName = "log";
 
@@ -34,13 +34,13 @@ io.on('connection', function (socket) {
     //Works, saves message when user connected
     socket.on('userConnected', function (message) {
         io.emit('chatmsg', message);
-        // addToCollection(dsn, dbName, message);
+        addToCollection(dsn, dbName, message);
     });
 
     //works, saves messages sent to database
     socket.on("send", function (message) {
         io.emit('chatmsg', message);
-        // addToCollection(dsn, dbName, message);
+        addToCollection(dsn, dbName, message);
     });
 
 
