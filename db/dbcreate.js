@@ -6,7 +6,7 @@
 "use strict";
 
 const mongoClient = require("mongodb").MongoClient;
-const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/chat";
+const dsn = "mongodb://localhost:27017/chat";
 
 const fs = require("fs");
 const path = require("path");

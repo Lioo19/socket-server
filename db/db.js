@@ -7,7 +7,7 @@ const mongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
 //connect to dsn
-const dsn = process.env.DBWEBB_DSN || "mongodb://localhost:27017/chat";
+const dsn = "mongodb://localhost:27017/chat";
 
 const projection = {
     name: 1,
