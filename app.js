@@ -20,7 +20,7 @@ const dbName = "log";
 
 app.use(cors());
 
-io.origins(['*:*'])
+io.origins(['https://me.linneaolofsson.me:443', 'http://localhost:3000'])
 
 io.on('connection', function (socket) {
 
