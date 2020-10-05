@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "production": "NODE_ENV='production' node app.js"
+    "start": "node -r esm app.js",
+    "production": "NODE_ENV='production' node -r esm app.js"
   },
   "keywords": [],
   "author": "",

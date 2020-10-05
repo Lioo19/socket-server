@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors');
 
 const server = require('http').createServer(app);
-const io = require('socket.io').listen(server);
+const io = require('socket.io')(server, { origins: '*:*'}.listen(server);
 
 const dsn = "mongodb://localhost:27017/chat";
 
@@ -24,12 +24,12 @@ io.origins(['https://me.linneaolofsson.me:443', 'http://localhost:3000'])
 
 io.on('connection', function (socket) {
 
-    // socket.on("chatLogRequest", function (message) {
-    //     findAll(dsn, dbName, projection)
-    //     .then(res => {
-    //         io.emit("chatLogConfirmed", res)})
-    //     .catch(err => console.log(err));
-    // });
+    socket.on("chatLogRequest", function (message) {
+        findAll(dsn, dbName, projection)
+        .then(res => {
+            io.emit("chatLogConfirmed", res)})
+        .catch(err => console.log(err));
+    });
 
     //Works, saves message when user connected
     socket.on('userConnected', function (message) {
