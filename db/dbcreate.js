@@ -3,7 +3,6 @@
  * DB: chat, COLLECTION: log
  * Reset works!
  */
-"use strict";
 
 const mongoClient = require("mongodb").MongoClient;
 const dsn = "mongodb://localhost:27017/chat";

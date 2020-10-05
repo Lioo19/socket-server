@@ -1,12 +1,10 @@
-// import { findAll, addToCollection } from "./db/db.js";
-
 const express = require('express');
 const app = express();
 const cors = require('cors');
 
 const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
-// const chatDB = require("./db/db.js");
+const chatDB = require("./db/db.js");
 
 const dsn = "mongodb://localhost:27017/chat";
 

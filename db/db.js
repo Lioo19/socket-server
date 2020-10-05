@@ -1,7 +1,6 @@
 /*
 * Functions to save data from chat and fetch all data from db
 */
-"use strict";
 
 const mongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
@@ -57,15 +56,7 @@ async function addToCollection(dsn, collectionName, thingToInsert) {
     await client.close();
 };
 
-
-//Test was successful!
-// const pizzaDocument = {
-//   name: "Neapolitan pizza",
-//   msg: "round",
-//   time: "14.30"
-// };
-//
-// addToCollection(dsn, "log", pizzaDocument);
-// findAll(dsn, "log", projection);
-
-export { findAll, addToCollection };
+module.exports = {
+    addToCollection: addToCollection,
+    findAll: findAll
+};
