@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors');
 
 const server = require('http').createServer(app);
-const io = require('socket.io').listen(server);
+const io = require('socket.io')(server);
 
 const dsn = "mongodb://localhost:27017/chat";
 
@@ -19,7 +19,6 @@ const projection = {
 const dbName = "log";
 
 app.use(cors());
-app.options('*', cors());
 
 io.origins(
     [
@@ -30,6 +29,10 @@ io.origins(
 );
 
 io.on('connection', function (socket) {
+
+    socket.on('chatmsg', function (message) {
+        io.emit('chatmsg', message);
+    });
 
     socket.on("chatLogRequest", function (message) {
         findAll(dsn, dbName, projection)
