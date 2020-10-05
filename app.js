@@ -1,4 +1,4 @@
-// import { findAll, addToCollection } from "./db/db.js";
+import { findAll, addToCollection } from "./db/db.js";
 
 const express = require('express');
 const app = express();
