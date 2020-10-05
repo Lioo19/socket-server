@@ -20,13 +20,14 @@ const dbName = "log";
 
 app.use(cors());
 
-// io.origins(['https://me.linneaolofsson.me:443', 'http://localhost:3000'])
-io.origins((origin, callback) => {
-  if (origin !== 'https://me.linneaolofsson.me:443' || origin !== 'http://localhost:3000') {
-    return callback('origin not allowed', false);
-  }
-  callback(null, true);
-});
+io.origins(
+    [
+        'https://me.linneaolofsson.me:443',
+        'http://localhost:3000',
+        'https://me.linneaolofsson.me/chat:*',
+        'https://me.linneaolofsson.me/chatlog:*'
+    ]
+);
 
 io.on('connection', function (socket) {
 
