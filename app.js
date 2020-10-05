@@ -1,25 +1,24 @@
-import { findAll, addToCollection } from "./db/db.js";
+// import { findAll, addToCollection } from "./db/db.js";
 
 const express = require('express');
 const app = express();
 const cors = require('cors');
 
-const server = require('https').createServer(app);
+const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
 
-const dsn = "mongodb://localhost:27017/chat";
+// const dsn = "mongodb://localhost:27017/chat";
+//
+// const projection = {
+//     name: 1,
+//     msg: 1,
+//     time: 1,
+//     _id: 0
+// };
+//
+// const dbName = "log";
 
-const projection = {
-    name: 1,
-    msg: 1,
-    time: 1,
-    _id: 0
-};
-
-const dbName = "log";
-
-// app.use(cors());
-app.use(cors({origin: true }));
+app.use(cors());
 
 io.origins(['https://me.linneaolofsson.me:443','http://localhost:3000']);
 
@@ -41,12 +40,12 @@ io.on('connection', function (socket) {
         // addToCollection(dsn, dbName, message);
     });
 
-    socket.on("chatLogRequest", function (message) {
-        findAll(dsn, dbName, projection)
-        .then(res => {
-            io.emit("chatLogConfirmed", res)})
-        .catch(err => console.log(err));
-    });
+    // socket.on("chatLogRequest", function (message) {
+    //     findAll(dsn, dbName, projection)
+    //     .then(res => {
+    //         io.emit("chatLogConfirmed", res)})
+    //     .catch(err => console.log(err));
+    // });
 
     io.on("disconnect", function (socket) {
         console.info("Disconnected");
