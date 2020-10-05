@@ -29,13 +29,6 @@ io.on('connection', function (socket) {
         io.emit('chatmsg', message);
     });
 
-    socket.on("chatLogRequest", function (message) {
-        findAll(dsn, dbName, projection)
-        .then(res => {
-            io.emit("chatLogConfirmed", res)})
-        .catch(err => console.log(err));
-    });
-
     //Works, saves message when user connected
     socket.on('userConnected', function (message) {
         io.emit('chatmsg', message);
@@ -48,6 +41,12 @@ io.on('connection', function (socket) {
         // addToCollection(dsn, dbName, message);
     });
 
+    socket.on("chatLogRequest", function (message) {
+        findAll(dsn, dbName, projection)
+        .then(res => {
+            io.emit("chatLogConfirmed", res)})
+        .catch(err => console.log(err));
+    });
 
     io.on("disconnect", function (socket) {
         console.info("Disconnected");
