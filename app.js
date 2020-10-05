@@ -18,10 +18,26 @@ const projection = {
 
 const dbName = "log";
 
-// app.use(cors());
-app.use(cors({origin: '*'}))
+// // Add headers
+// app.use(function (req, res, next) {
+//
+//     // Website you wish to allow to connect
+//     res.setHeader('Access-Control-Allow-Origin', 'https://me.linneaolofsson.me');
+//
+//     // Request methods you wish to allow
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//
+//     // Request headers you wish to allow
+//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//
+//     // Pass to next layer of middleware
+//     next();
+// });
 
-io.origins(['https://me.linneaolofsson.me:443','http://localhost:3000']);
+// app.use(cors());
+app.use(cors({origin: ['http://localhost:3000', 'https://me.linneaolofsson.me'] }));
+
+io.origins(['https://me.linneaolofsson.me:*','http://localhost:3000']);
 
 io.on('connection', function (socket) {
 
