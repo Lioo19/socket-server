@@ -19,6 +19,7 @@ const projection = {
 const dbName = "log";
 
 app.use(cors());
+app.options('*', cors());
 
 io.origins(
     [
