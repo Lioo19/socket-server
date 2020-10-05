@@ -18,15 +18,10 @@ const projection = {
 
 const dbName = "log";
 
-app.use(cors());
+// app.use(cors());
+app.use(cors({origin: '*'}))
 
-io.origins(
-    [
-        'https://me.linneaolofsson.me:443',
-        'http://localhost:3000',
-        'mongodb://localhost:27017/chat'
-    ]
-);
+io.origins(['https://me.linneaolofsson.me:443','http://localhost:3000']);
 
 io.on('connection', function (socket) {
 
