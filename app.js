@@ -18,14 +18,8 @@ const projection = {
 
 const dbName = "log";
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 // app.use(cors());
-app.use(cors({origin: '*'}));
+app.use(cors({origin: true }));
 
 io.origins(['https://me.linneaolofsson.me:443','http://localhost:3000']);
 
