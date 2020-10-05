@@ -24,8 +24,7 @@ io.origins(
     [
         'https://me.linneaolofsson.me:443',
         'http://localhost:3000',
-        'https://me.linneaolofsson.me/chat:*',
-        'https://me.linneaolofsson.me/chatlog:*'
+        'https://socket-server.linneaolofsson.me:*'
     ]
 );
 
