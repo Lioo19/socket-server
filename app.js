@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors');
 
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const io = require('socket.io')(server).listen(server);
 
 const dsn = "mongodb://localhost:27017/chat";
 
@@ -35,9 +35,9 @@ const dbName = "log";
 // });
 
 // app.use(cors());
-app.use(cors({origin: ['http://localhost:3000', 'https://me.linneaolofsson.me'] }));
+app.use(cors({origin: '*'}));
 
-io.origins(['https://me.linneaolofsson.me:*','http://localhost:3000']);
+io.origins(['https://me.linneaolofsson.me:443','http://localhost:3000']);
 
 io.on('connection', function (socket) {
 
