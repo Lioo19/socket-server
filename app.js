@@ -5,17 +5,7 @@ const app = express();
 const cors = require('cors');
 
 const server = require('http').createServer(app);
-const io = require('socket.io'))(server, {
-    handlePreflightRequest: (req, res) => {
-        const headers = {
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
-            "Access-Control-Allow-Credentials": true
-        };
-        res.writeHead(200, headers);
-        res.end();
-    }
-}).listen(server);
+const io = require('socket.io').listen(server);
 
 const dsn = "mongodb://localhost:27017/chat";
 
@@ -30,7 +20,13 @@ const dbName = "log";
 
 app.use(cors());
 
-io.origins(['https://me.linneaolofsson.me:443', 'http://localhost:3000'])
+// io.origins(['https://me.linneaolofsson.me:443', 'http://localhost:3000'])
+io.origins((origin, callback) => {
+  if (origin !== 'https://me.linneaolofsson.me:443' || origin !== 'http://localhost:3000') {
+    return callback('origin not allowed', false);
+  }
+  callback(null, true);
+});
 
 io.on('connection', function (socket) {
 
