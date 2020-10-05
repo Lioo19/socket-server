@@ -23,10 +23,6 @@ io.origins(['https://me.linneaolofsson.me:443','http://localhost:3000']);
 
 io.on('connection', function (socket) {
 
-    socket.on('chatmsg', function (message) {
-        io.emit('chatmsg', message);
-    });
-
     //Works, saves message when user connected
     socket.on('userConnected', function (message) {
         io.emit('chatmsg', message);
