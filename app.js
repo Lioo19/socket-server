@@ -18,21 +18,11 @@ const projection = {
 
 const dbName = "log";
 
-// // Add headers
-// app.use(function (req, res, next) {
-//
-//     // Website you wish to allow to connect
-//     res.setHeader('Access-Control-Allow-Origin', 'https://me.linneaolofsson.me');
-//
-//     // Request methods you wish to allow
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-//
-//     // Request headers you wish to allow
-//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-//
-//     // Pass to next layer of middleware
-//     next();
-// });
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // app.use(cors());
 app.use(cors({origin: '*'}));
